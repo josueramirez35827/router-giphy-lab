@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { NavLink, Route, Routes } from 'react-router-dom';
+import Home from './components/Home';
+import NoMatch from './components/NoMatch';
+import Search from './components/Search';
+import Trending from './components/Trending';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='links'>
+        <nav>
+          <NavLink to={"/"}>Home</NavLink>
+          <NavLink to={"/search"}>Search</NavLink>
+          <NavLink to={"/trending"}>Trending</NavLink>
+        </nav>
+      </div>
+      <div>
+        <Routes>
+          
+          <Route path="/" element={<Home />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/trending" element={<Trending />} />
+          <Route path="*" element={<NoMatch />} />
+
+        </Routes>
+      </div>
+     
     </div>
   );
 }
